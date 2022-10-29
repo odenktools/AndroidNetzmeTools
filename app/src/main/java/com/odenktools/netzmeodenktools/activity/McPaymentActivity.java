@@ -43,6 +43,7 @@ public class McPaymentActivity extends AppCompatActivity {
         binding = ActivityMcPaymentBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         bindSubmit();
+        fillCredentials();
     }
 
     private void bindSubmit() {
@@ -55,6 +56,19 @@ public class McPaymentActivity extends AppCompatActivity {
         });
     }
 
+    private final String merchantId = "MCP2022060572";
+    private final String merchantPassword = "0x00e9cbcd740dbb8abd";
+    private final String hashkey = "CBzYsd6Tb3KKw7A";
+    private String externalId = "2e25ee3b-4e10-4759-8114-14faf6399353";
+    private String urlStaging = "https://api-stage.mcpayment.id";
+
+    private void fillCredentials() {
+        binding.edMerchantId.setText(merchantId);
+        binding.edSecretUnboundId.setText(merchantPassword);
+        binding.edExternalId.setText(externalId);
+        binding.edHashKey.setText(hashkey);
+    }
+
     /**
      * https://developer.mcpayment.id/#8d9ee039-f999-4240-a30a-f07d5a43037c
      * <p>
@@ -64,8 +78,8 @@ public class McPaymentActivity extends AppCompatActivity {
      * URL_MCPAY_STAGING=https://api-stage.mcpayment.id
      */
     public void hitMcPayment() {
-        String hashKey = "CBzYsd6Tb3KKw7A";
-        String externalId = "2e25ee3b-4e10-4759-8114-14faf6399353";
+        String hashKey = binding.edMerchantId.getText().toString();
+        String externalId = binding.edExternalId.getText().toString();
         //String orderId = UUID.randomUUID().toString();
         String orderId = "rsadQA5JxD9SsR2BDqN8rS";
         String hash = null;
@@ -77,7 +91,7 @@ public class McPaymentActivity extends AppCompatActivity {
         }
         HashMap<String, String> headerHashMap = new HashMap<>();
         headerHashMap.put("x-version", "v3");
-        String authToken = Credentials.basic("MCP2022060572", "0x00e9cbcd740dbb8abd");
+        String authToken = Credentials.basic(merchantId, merchantPassword);
         //String authToken = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjM3MzYxNDEsImlhdCI6MTY2MzczMjU0MSwiaXNzIjoiNjI2ZGJhMDNjZmE2NGQzNjllMWNjOWY2NDc5MTRhMmUiLCJyb2wiOjF9.8RkydawZO8ZVJqtUW0ZTyR_wqJBsuWgxliM9sRLNmtL5-T2rPOfJKQqgilfMsvj32lpJ83846AczXRn4ge6zPw";
         try {
             mcSignature = AppDigestUtil.signHash(hash, orderId);
@@ -167,6 +181,7 @@ public class McPaymentActivity extends AppCompatActivity {
                     //binding.editTextTextMultiLine.setText(response.body());
                 }
             }
+
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 binding.editTextTextMultiLine.setText(t.getMessage().toString());

@@ -1,16 +1,17 @@
 package com.odenktools.netzmeodenktools;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import com.odenktools.netzmeodenktools.activity.InvoiceActivity;
+import com.odenktools.netzmeodenktools.activity.McPaymentActivity;
 import com.odenktools.netzmeodenktools.activity.ProfileActivity;
 import com.odenktools.netzmeodenktools.activity.ScannerQrActivity;
 import com.odenktools.netzmeodenktools.activity.TopUpActivity;
@@ -32,11 +33,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkCustomerProfile() {
-        /*final RealmResults<CustomerRealm> cartItemResult = mRealmData
-                .where(CustomerRealm.class).findAll();
-        if (cartItemResult.size() == 0) {
 
-        }*/
     }
 
     private void fireButtonAction() {
@@ -59,6 +56,11 @@ public class MainActivity extends AppCompatActivity {
         binding.btnTopup.setOnClickListener(v -> {
             //Add
             gotoActivity(TopUpActivity.class);
+        });
+        // MC Payment
+        binding.btnMcPayment.setOnClickListener(v -> {
+            //goto
+            gotoActivity(McPaymentActivity.class);
         });
     }
 
