@@ -64,9 +64,8 @@ dependencies {
 
     implementation "com.jakewharton.timber:timber:4.7.1"
     implementation "org.joda:joda-money:1.0.2"
-
+    implementation "joda-time:joda-time:2.9.4"
     implementation 'io.github.pilgr:paperdb:2.7.2'
-
     //noinspection GradleDependency
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.robolectric:robolectric:4.9'

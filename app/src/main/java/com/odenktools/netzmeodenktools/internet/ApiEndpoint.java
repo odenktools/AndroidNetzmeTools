@@ -1,7 +1,13 @@
 package com.odenktools.netzmeodenktools.internet;
 
-import com.odenktools.netzmeodenktools.model.*;
-import com.odenktools.netzmeodenktools.model.request.*;
+import com.odenktools.netzmeodenktools.model.InquiryBcaXML;
+import com.odenktools.netzmeodenktools.model.ResponseTopUpXml;
+import com.odenktools.netzmeodenktools.model.mcpayment.McCallbackSuccessRequest;
+import com.odenktools.netzmeodenktools.model.mcpayment.McPayQrisRequest;
+import com.odenktools.netzmeodenktools.model.request.InvoiceWaStoreRequest;
+import com.odenktools.netzmeodenktools.model.request.MerchantPayInvoiceRequest;
+import com.odenktools.netzmeodenktools.model.request.QrPaymentRequest;
+import com.odenktools.netzmeodenktools.model.request.RequestTopUpXml;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -45,4 +51,16 @@ public interface ApiEndpoint {
      */
     @POST("fp/payment/notification")
     Call<ResponseTopUpXml> paymentNotification(@Body RequestTopUpXml request);
+
+    /**
+     * Mc payment create QRIS
+     */
+    @POST("create-qr")
+    Call<String> postMcPayCreateQris(@Body McPayQrisRequest body);
+
+    /**
+     * MC Payment callback
+     */
+    @POST("payment/callback-success")
+    Call<String> postMcPayCreateQris(@Body McCallbackSuccessRequest body);
 }
