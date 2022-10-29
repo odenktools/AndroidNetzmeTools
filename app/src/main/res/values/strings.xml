@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">NetzmeOdenktools</string>
+    <string name="exit_dialog_confirm">Keluar dari aplikasi?</string>
+    <!-- CAMERA -->
+    <string name="dialog_camera_permission_title">Camera Permission.</string>
+    <string name="dialog_camera_permission_desc">Untuk mengakses fitur ini, kami harus mengakses kamera anda.</string>
+    <string name="dialog_btn_positive">Coba Lagi</string>
+    <string name="dialog_btn_negative">Tidak</string>
+</resources>
