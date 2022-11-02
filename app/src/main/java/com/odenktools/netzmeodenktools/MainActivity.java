@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.odenktools.netzmeodenktools.activity.HadorActivity;
 import com.odenktools.netzmeodenktools.activity.InvoiceActivity;
 import com.odenktools.netzmeodenktools.activity.McPaymentActivity;
 import com.odenktools.netzmeodenktools.activity.ProfileActivity;
@@ -61,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
         binding.btnMcPayment.setOnClickListener(v -> {
             //goto
             gotoActivity(McPaymentActivity.class);
+        });
+        // MC Payment
+        binding.btnTestingActivity.setOnClickListener(v -> {
+            //goto
+            gotoActivity(HadorActivity.class);
         });
     }
 

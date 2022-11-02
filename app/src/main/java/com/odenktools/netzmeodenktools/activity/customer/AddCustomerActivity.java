@@ -15,12 +15,11 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicReference;
 
 import io.paperdb.Paper;
 import timber.log.Timber;
 
-import static com.odenktools.netzmeodenktools.util.Constanta.*;
+import static com.odenktools.netzmeodenktools.util.Constanta.CUSTOMER_TABLE;
 
 
 public class AddCustomerActivity extends AppCompatActivity {
@@ -72,25 +71,26 @@ public class AddCustomerActivity extends AppCompatActivity {
         binding.btnDeleteCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                List<CustomerDb> fff = Paper.book().read(CUSTOMER_TABLE, new ArrayList<>());
-                if (fff == null) {
+                List<CustomerDb> customerList = Paper.book().read(CUSTOMER_TABLE, new ArrayList<>());
+                if (customerList == null) {
                     return;
                 }
-                for (CustomerDb item : fff) {
+                for (CustomerDb item : customerList) {
                     if (StringUtils.equals(item.getId(), customerUid)) {
-                        fff.remove(item);
+                        customerList.remove(item);
                     }
                     Timber.d("ddddddddddddddd %s", item.getId());
                 }
-                Paper.book().write(CUSTOMER_TABLE, fff);
+                Paper.book().write(CUSTOMER_TABLE, customerList);
             }
         });
+
         binding.btnGetAllCustomer.setOnClickListener(view -> {
-            List<CustomerDb> fff = Paper.book().read(CUSTOMER_TABLE, new ArrayList<>());
-            if (fff == null) {
+            List<CustomerDb> customerList = Paper.book().read(CUSTOMER_TABLE, new ArrayList<>());
+            if (customerList == null) {
                 return;
             }
-            for (CustomerDb item : fff) {
+            for (CustomerDb item : customerList) {
                 Timber.d("READ_ALL_DATA %s", item.getId());
             }
         });

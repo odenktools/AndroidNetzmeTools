@@ -47,7 +47,7 @@ public interface ApiEndpoint {
                                 @Query("sign") String hashVa);
 
     /**
-     * Topup VA BCA
+     * Topup Melalui VA BCA.
      */
     @POST("fp/payment/notification")
     Call<ResponseTopUpXml> paymentNotification(@Body RequestTopUpXml request);

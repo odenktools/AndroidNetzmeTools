@@ -104,7 +104,7 @@ public class InvoiceActivity extends AppCompatActivity {
                         String userId = jsonBody.getString("userId");
                         String invoiceId = jsonBody.getString("invoiceId");
                         String urlInvoice = jsonBody.getString("urlInvoice");
-                        payInvoice(invoiceId);
+                        InvoiceActivity.this.payInvoice(invoiceId);
                     } catch (JSONException e) {
                         Timber.e(e);
                     }

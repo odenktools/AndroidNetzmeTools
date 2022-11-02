@@ -38,6 +38,7 @@
         <activity android:name=".activity.InvoiceActivity" />
         <activity android:name=".activity.ScannerQrActivity" />
         <activity android:name=".activity.McPaymentActivity" />
+        <activity android:name=".activity.HadorActivity" />
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"

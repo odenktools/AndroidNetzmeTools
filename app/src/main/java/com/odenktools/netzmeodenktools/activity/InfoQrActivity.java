@@ -2,6 +2,7 @@ package com.odenktools.netzmeodenktools.activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,6 +35,7 @@ public class InfoQrActivity extends AppCompatActivity {
             //binding.textView.setText(prettyJson);
             binding.editTextTextMultiLine.setText(prettyJson);
         } catch (Exception e) {
+            Toast.makeText(InfoQrActivity.this, "sssss", Toast.LENGTH_SHORT).show();
             Timber.e("ERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR %s", e.getMessage());
         }
     }
